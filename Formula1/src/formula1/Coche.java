@@ -14,9 +14,9 @@ import java.util.Map;
  */
 public class Coche implements Comparable<Coche>
 {
-	protected Map<String, Float> params = new HashMap<>();
-	protected Escuderia escuderia = null;
-	protected String modelo = null;
+	protected Map<String, Float> _params = new HashMap<>();
+	protected Escuderia _escuderia = null;
+	protected String _modelo = null;
 	
 	public Coche(String modelo, float velMedia, float factAcc, float factFren, float peso) throws ConstruccioCotxeExcepcio
 	{
@@ -26,18 +26,31 @@ public class Coche implements Comparable<Coche>
 			// TODO 
 			//return new ConstruccioCotxeExcepcio(new String[2]{"test1", "test2"});
 		}
-		this.modelo = modelo;
-		params.put("velMedia", velMedia );
-		params.put("factAcc", factAcc );
-		params.put("factFren", factFren );
-		params.put("peso", peso );
+		_modelo = modelo;
+		_params.put("velMedia", velMedia );
+		_params.put("factAcc", factAcc );
+		_params.put("factFren", factFren );
+		_params.put("peso", peso );
 	}
 	
+	public String getModelo()
+	{
+		return _modelo;
+	}
 	public float getCalidad()
 	{
-		return params.get("factFren") + (params.get("factAcc") + params.get("velMedia"))/params.get("peso");
+		return _params.get("factFren") + (_params.get("factAcc") + _params.get("velMedia"))/_params.get("peso");
 	}
 
+	public void setEscuderia(Escuderia escuderia)
+	{
+		_escuderia = escuderia;
+	}
+	
+	public Escuderia getEscuderia()
+	{
+		return _escuderia;
+	}
 	@Override
 	public int compareTo(Coche otro) {
 		return (int)Math.round(getCalidad() - otro.getCalidad());

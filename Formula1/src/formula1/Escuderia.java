@@ -27,6 +27,12 @@ public class Escuderia
 	public void addCoche(Coche coche)
 	{
 		coches.add(coche);
+		coche.setEscuderia(this);
+	}
+	
+	public String getNombre()
+	{
+		return nombre;
 	}
 	
 	public Coche[] getDosMejoresCoches()
